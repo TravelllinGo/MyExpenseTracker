@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+<h2 class="mb-3 text-center">My Expenses</h2>
+<div class="container">
+  <div class="row g-3 mb-4">
+    <div class="col-md-6">
+      <div class="card bg-light shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Total Spent</h5>
+          <p class="fs-4 text-danger">₹<%= total %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-light shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">% of Salary Spent</h5>
+          <p class="fs-4"><%= percentSpent %>%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Title</th>
+        <th>Amount (₹)</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Actions</th>
+        <!-- NEW -->
+      </tr>
+    </thead>
+    <tbody>
+      <% expenses.forEach(exp => { %>
+      <tr>
+        <td><%= exp.title %></td>
+        <td><%= exp.amount %></td>
+        <td><%= exp.category %></td>
+        <td><%= exp.date %></td>
+        <td>
+          <a href="/edit/<%= exp.id %>" class="btn btn-sm btn-warning">Edit</a>
+          <form action="/delete/<%= exp.id %>" method="POST" class="d-inline">
+            <button
+              class="btn btn-sm btn-danger"
+              onclick="return confirm('Are you sure?')"
+            >
+              Delete
+            </button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <a href="/add" class="btn btn-outline-primary mt-3">+ Add More</a>
+</div>
+<%- include('partials/footer') %>

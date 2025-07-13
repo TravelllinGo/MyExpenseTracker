@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<h2 class="mb-4">Spending by Category</h2>
+
+<canvas id="expenseChart" width="400" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('expenseChart').getContext('2d');
+
+  const data = {
+    labels: <%- JSON.stringify(categories) %>,
+    datasets: [{
+      label: 'Spending (₹)',
+      data: <%- JSON.stringify(totals) %>,
+      backgroundColor: [
+        '#007bff', '#28a745', '#ffc107', '#dc3545', '#6f42c1', '#17a2b8'
+      ],
+      borderWidth: 1
+    }]
+  };
+
+  const config = {
+    type: 'pie', // change to 'bar' for bar chart
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'right'
+        }
+      }
+    }
+  };
+
+  new Chart(ctx, config);
+</script>
+
+<a href="/dashboard" class="btn btn-outline-secondary mt-4"
+  >← Back to Dashboard</a
+>
+
+<%- include('partials/footer') %>

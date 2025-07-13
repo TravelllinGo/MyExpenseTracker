@@ -1,0 +1,36 @@
+<%-include('partials/header') %>
+<div class="container">
+  <h2 class="mb-4">30-Day Spending Comparison</h2>
+
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card bg-light shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Last 30 Days</h5>
+          <p class="fs-4 text-primary">₹<%= last30Sum %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-light shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Previous 30 Days</h5>
+          <p class="fs-4 text-warning">₹<%= prev30Sum %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-light shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Difference</h5>
+          <p class="fs-4 text-<%= diff > 0 ? 'danger' : 'success' %>">
+            ₹<%= diff %> <small>(<%= trend %>)</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="/expenses" class="btn btn-outline-dark">← Back to Expenses</a>
+</div>
+<%- include('partials/footer') %>

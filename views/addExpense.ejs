@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<div class="container">
+  <h3 class="mb-4" class="text-center">Add Expense</h3>
+  <form action="/add" method="POST" class="card p-4 shadow-sm">
+    <div class="mb-3">
+      <input
+        class="form-control"
+        name="title"
+        placeholder="Expense Title"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        class="form-control"
+        name="amount"
+        type="number"
+        step="0.01"
+        placeholder="Amount in ₹"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <select class="form-control" name="category" required>
+        <option value="">Choose Category</option>
+        <option>Food</option>
+        <option>Transport</option>
+        <option>Entertainment</option>
+        <option>Bills</option>
+        <option>Shopping</option>
+        <option>Others</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <input class="form-control" name="date" type="date" required />
+    </div>
+    <button class="btn  w-100  btn-dark">Add Expense</button>
+  </form>
+</div>
+<%-include('partials/footer') %>

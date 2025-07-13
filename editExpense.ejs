@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<h3 class="mb-4">Edit Expense</h3>
+
+<form action="/edit/<%= expense.id %>" method="POST" class="card p-4 shadow-sm">
+  <div class="mb-3">
+    <label>Title</label>
+    <input class="form-control" name="title" value="<%= expense.title %>" required>
+  </div>
+  <div class="mb-3">
+    <label>Amount (₹)</label>
+    <input class="form-control" name="amount" type="number" step="0.01" value="<%= expense.amount %>" required>
+  </div>
+  <div class="mb-3">
+    <label>Category</label>
+    <select class="form-select" name="category" required>
+      <option <%= expense.category === 'Food' ? 'selected' : '' %>>Food</option>
+      <option <%= expense.category === 'Transport' ? 'selected' : '' %>>Transport</option>
+      <option <%= expense.category === 'Entertainment' ? 'selected' : '' %>>Entertainment</option>
+      <option <%= expense.category === 'Bills' ? 'selected' : '' %>>Bills</option>
+      <option <%= expense.category === 'Shopping' ? 'selected' : '' %>>Shopping</option>
+      <option <%= expense.category === 'Others' ? 'selected' : '' %>>Others</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Date</label>
+    <input class="form-control" name="date" type="date" value="<%= expense.date %>" required>
+  </div>
+  <button class="btn btn-primary w-100">Update Expense</button>
+</form>
+
+<%- include('partials/footer') %>
